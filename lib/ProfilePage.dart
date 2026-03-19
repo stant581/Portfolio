@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:html' as html show window;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
