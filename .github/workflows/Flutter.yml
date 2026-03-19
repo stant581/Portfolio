@@ -24,8 +24,9 @@ jobs:
         run: flutter test
         
       
-      - name: Build web (if applicable)
-        run: flutter build web
+      - name: Build web
+        # Replace 'portfolio' with your exact GitHub repository name
+        run: flutter build web --release --base-href "/Portfolio/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
