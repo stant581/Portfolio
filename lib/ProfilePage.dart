@@ -257,7 +257,7 @@ class ProfileInfo extends StatelessWidget {
           color: Colors.orange,
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage("Animesh1.jpg"),
+            image: AssetImage("assets/Animesh1.jpg"),
             alignment: Alignment.center,
             fit: BoxFit.cover,
           ),
