@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:portfolio/responsive_widget.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key key}) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   List<Widget> navButtons() => [
         NavButton(
           text: "about",
           onPressed: () {
-            html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+            if (kIsWeb) {
+              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+            }
           },
         ),
         NavButton(
           text: "work",
           onPressed: () {
-            html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            if (kIsWeb) {
+              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            }
           },
         ),
         NavButton(
           text: "contact",
           onPressed: () {
-            html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            if (kIsWeb) {
+              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            }
           },
         ),
       ];
@@ -90,19 +96,25 @@ class NavHeader extends StatelessWidget {
         NavButton(
           text: "About",
           onPressed: () {
-            html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+            if (kIsWeb) {
+              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+            }
           },
         ),
         NavButton(
           text: "Work",
           onPressed: () {
-            html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            if (kIsWeb) {
+              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            }
           },
         ),
         NavButton(
           text: "Contact",
           onPressed: () {
-            html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            if (kIsWeb) {
+              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+            }
           },
         ),
               ],
@@ -112,6 +124,7 @@ class NavHeader extends StatelessWidget {
     );
   }
 }
+
 class Animesh extends StatelessWidget {
 
   @override
@@ -143,52 +156,31 @@ class Animesh extends StatelessWidget {
 }
 
 class NavButton extends StatelessWidget {
-  final text;
-  final onPressed;
+  final String text;
+  final VoidCallback onPressed;
   final Color color;
 
   const NavButton(
-      {Key key,
-      @required this.text,
-      @required this.onPressed,
+      {Key? key,
+      required this.text,
+      required this.onPressed,
       this.color = Colors.white})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
-      child: Text(text),
-      borderSide: BorderSide(
-        color: color,
-      ),
+    return OutlinedButton(
       onPressed: onPressed,
-      highlightedBorderColor: color,
+      style: OutlinedButton.styleFrom(
+        side: BorderSide(color: color),
+      ),
+      child: Text(text),
     );
   }
 }
 
 class ProfileInfo extends StatelessWidget {
-  profileImage(context) => Container(
-        height: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
-        width: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
-        decoration: BoxDecoration(
-          backgroundBlendMode: BlendMode.luminosity,
-          color: Colors.orange,
-//            borderRadius: BorderRadius.circular(40),
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            image: AssetImage("Animesh1.jpg"),
-            alignment: Alignment.center,
-            fit: BoxFit.cover,
-          ),
-        ),
-      );
-
-  final profileData = Column(
+  late final profileData = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Text(
@@ -221,36 +213,60 @@ class ProfileInfo extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          RaisedButton(
-            shape: StadiumBorder(),
-            child: Text("Resume"),
-            color: Colors.red,
+          ElevatedButton(
             onPressed: () {
-              html.window.open(
-                  "https://drive.google.com/open?id=1NJ297GUvRvve7xDpxoNt_cGk78VKun4e",
-                  "Resume");
+              if (kIsWeb) {
+                html.window.open(
+                    "https://drive.google.com/open?id=1NJ297GUvRvve7xDpxoNt_cGk78VKun4e",
+                    "Resume");
+              }
             },
-            padding: EdgeInsets.all(10),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              padding: EdgeInsets.all(10),
+              shape: StadiumBorder(),
+            ),
+            child: Text("Resume"),
           ),
           SizedBox(
             width: 20,
           ),
-          OutlineButton(
-            borderSide: BorderSide(
-              color: Colors.red,
-            ),
-            shape: StadiumBorder(),
-            child: Text("Say Hi!"),
-            color: Colors.red,
+          OutlinedButton(
             onPressed: () {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+              if (kIsWeb) {
+                html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+              }
             },
-            padding: EdgeInsets.all(10),
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(color: Colors.red),
+              padding: EdgeInsets.all(10),
+              shape: StadiumBorder(),
+            ),
+            child: Text("Say Hi!"),
           )
         ],
       )
     ],
   );
+
+  Widget profileImage(context) => Container(
+        height: ResponsiveWidget.isSmallScreen(context)
+            ? MediaQuery.of(context).size.height * 0.25
+            : MediaQuery.of(context).size.width * 0.25,
+        width: ResponsiveWidget.isSmallScreen(context)
+            ? MediaQuery.of(context).size.height * 0.25
+            : MediaQuery.of(context).size.width * 0.25,
+        decoration: BoxDecoration(
+          backgroundBlendMode: BlendMode.luminosity,
+          color: Colors.orange,
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage("Animesh1.jpg"),
+            alignment: Alignment.center,
+            fit: BoxFit.cover,
+          ),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -281,14 +297,18 @@ class SocialInfo extends StatelessWidget {
       NavButton(
         text: "Github",
         onPressed: () {
-          html.window.open("https://github.com/stant581", "Git");
+          if (kIsWeb) {
+            html.window.open("https://github.com/stant581", "Git");
+          }
         },
         color: Colors.blue,
       ),
       NavButton(
         text: "Facebook",
         onPressed: () {
-          html.window.open("https://www.facebook.com/profile.php?id=100006763517192", "Fb");
+          if (kIsWeb) {
+            html.window.open("https://www.facebook.com/profile.php?id=100006763517192", "Fb");
+          }
         },
         color: Colors.blue,
       ),
