@@ -1,4 +1,3 @@
-import 'dart:html' as html show window;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -9,18 +8,14 @@ class ProfilePage extends StatelessWidget {
 
   List<Widget> navButtons() => [
         NavButton(
-          text: "about",
-          onPressed: () {
-            if (kIsWeb) {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
-            }
-          },
+          text: "About",
+          onPressed: () => openLink("https://www.linkedin.com/in/animeshbanerjeeee/"),
         ),
         NavButton(
           text: "work",
           onPressed: () {
             if (kIsWeb) {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+              openLink("https://www.linkedin.com/in/animeshbanerjeeee/");
             }
           },
         ),
@@ -28,7 +23,7 @@ class ProfilePage extends StatelessWidget {
           text: "contact",
           onPressed: () {
             if (kIsWeb) {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+              openLink("https://www.linkedin.com/in/animeshbanerjeeee/");
             }
           },
         ),
@@ -98,7 +93,7 @@ class NavHeader extends StatelessWidget {
           text: "About",
           onPressed: () {
             if (kIsWeb) {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+              openLink("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
             }
           },
         ),
@@ -106,7 +101,7 @@ class NavHeader extends StatelessWidget {
           text: "Work",
           onPressed: () {
             if (kIsWeb) {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+              openLink("https://www.linkedin.com/in/animeshbanerjeeee/");
             }
           },
         ),
@@ -114,7 +109,7 @@ class NavHeader extends StatelessWidget {
           text: "Contact",
           onPressed: () {
             if (kIsWeb) {
-              html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/","Animesh");
+              openLink("https://www.linkedin.com/in/animeshbanerjeeee/");
             }
           },
         ),
@@ -217,7 +212,7 @@ class ProfileInfo extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               if (kIsWeb) {
-                html.window.open(
+                openLink(
                     "https://drive.google.com/open?id=1NJ297GUvRvve7xDpxoNt_cGk78VKun4e",
                     "Resume");
               }
@@ -235,7 +230,7 @@ class ProfileInfo extends StatelessWidget {
           OutlinedButton(
             onPressed: () {
               if (kIsWeb) {
-                html.window.open("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+                openLink("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
               }
             },
             style: OutlinedButton.styleFrom(
@@ -299,7 +294,7 @@ class SocialInfo extends StatelessWidget {
         text: "Github",
         onPressed: () {
           if (kIsWeb) {
-            html.window.open("https://github.com/stant581", "Git");
+            openLink("https://github.com/stant581", "Git");
           }
         },
         color: Colors.blue,
@@ -308,7 +303,7 @@ class SocialInfo extends StatelessWidget {
         text: "Facebook",
         onPressed: () {
           if (kIsWeb) {
-            html.window.open("https://www.facebook.com/profile.php?id=100006763517192", "Fb");
+            openLink("https://www.facebook.com/profile.php?id=100006763517192", "Fb");
           }
         },
         color: Colors.blue,
