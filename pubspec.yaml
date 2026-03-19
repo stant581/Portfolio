@@ -17,6 +17,9 @@ environment:
   sdk: "3.11.3"
 
 dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.3.0  # Add this once
   cupertino_icons: ^1.0.8
 
 
