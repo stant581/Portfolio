@@ -94,7 +94,7 @@ class NavHeader extends StatelessWidget {
           text: "About",
           onPressed: () {
             if (kIsWeb) {
-              openLink("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+              openLink("https://www.linkedin.com/in/animeshbanerjeeee/");
             }
           },
         ),
@@ -214,8 +214,7 @@ class ProfileInfo extends StatelessWidget {
             onPressed: () {
               if (kIsWeb) {
                 openLink(
-                    "https://drive.google.com/open?id=1NJ297GUvRvve7xDpxoNt_cGk78VKun4e",
-                    "Resume");
+                    "https://drive.google.com/open?id=1NJ297GUvRvve7xDpxoNt_cGk78VKun4e");
               }
             },
             style: ElevatedButton.styleFrom(
@@ -231,7 +230,7 @@ class ProfileInfo extends StatelessWidget {
           OutlinedButton(
             onPressed: () {
               if (kIsWeb) {
-                openLink("https://www.linkedin.com/in/animeshbanerjeeee/", "Animesh");
+                openLink("https://www.linkedin.com/in/animeshbanerjeeee/");
               }
             },
             style: OutlinedButton.styleFrom(
@@ -295,7 +294,7 @@ class SocialInfo extends StatelessWidget {
         text: "Github",
         onPressed: () {
           if (kIsWeb) {
-            openLink("https://github.com/stant581", "Git");
+            openLink("https://github.com/stant581");
           }
         },
         color: Colors.blue,
@@ -304,7 +303,7 @@ class SocialInfo extends StatelessWidget {
         text: "Facebook",
         onPressed: () {
           if (kIsWeb) {
-            openLink("https://www.facebook.com/profile.php?id=100006763517192", "Fb");
+            openLink("https://www.facebook.com/animesh.banerjee.829219/");
           }
         },
         color: Colors.blue,
