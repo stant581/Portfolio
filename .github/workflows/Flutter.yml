@@ -5,7 +5,12 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+    
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +27,24 @@ jobs:
       
       - name: Run tests
         run: flutter test
+        
       
-      - name: Build web (if applicable)
-        run: flutter build web
+      - name: Build web
+        # Ensure 'Portfolio' matches your case-sensitive repo name exactly
+        run: flutter build web --release --base-href "/Portfolio/"
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
